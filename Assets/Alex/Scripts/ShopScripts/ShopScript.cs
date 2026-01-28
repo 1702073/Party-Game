@@ -5,9 +5,7 @@ using System.Collections.Generic;
 public class ShopScript : MonoBehaviour
 {
     [SerializeField] private List<ShopData> allSkins;
-    private int currency = 10000; //Change this later to use save data
 
-        //SaveDataController.Instance.current.Currency;
  
 
     public void Exit()
