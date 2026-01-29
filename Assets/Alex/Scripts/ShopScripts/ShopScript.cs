@@ -22,7 +22,6 @@ public class ShopScript : MonoBehaviour
 
         for (int i = 0; i < 16; i++)
         {
-
             GameObject newButton = Instantiate(buttonPrefab, skinButtonsTransform);
             newButton.GetComponent<Image>().sprite = allSkins[i].skin;
             RectTransform rect = newButton.GetComponent<RectTransform>();
@@ -34,15 +33,8 @@ public class ShopScript : MonoBehaviour
             rect.anchorMin = baseAnchorMin + offset;
             rect.anchorMax = baseAnchorMax + offset;
 
-            //newButton.GetComponent<Button>().onClick.RemoveAllListeners();
-            //newButton.GetComponent<Button>().onClick.AddListener(() => Buy(i));
-
-            //newButton.GetComponent<Button>().onClick.RemoveAllListeners();
-            //newButton.GetComponent<Button>().onClick.AddListener(() => Buy(i));
-        //     RectTransform temp = newButton.GetComponent<RectTransform>();
-        //     temp.anchorMin = new Vector2(temp.anchorMin.x + 187f * (i / 4) / skinButtonsTransform.rect.width, temp.anchorMin.y - 144f * (i % 4) / skinButtonsTransform.rect.height);
-        //     temp.anchorMax = new Vector2(temp.anchorMax.x + 187f * (i / 4) / skinButtonsTransform.rect.width, temp.anchorMax.y - 144f * (i % 4) / skinButtonsTransform.rect.height);
         }
+
     }
 
     public void Exit()
@@ -55,17 +47,25 @@ public class ShopScript : MonoBehaviour
         Debug.Log("EEE" + index.ToString());
         List<Sprite> ownedSkins = SaveDataController.Instance.current.UnlockedSkins.Skins;
         Sprite skin = allSkins[index].skin; 
-        int cost = allSkins[index].cost; 
-        int currency = SaveDataController.Instance.current.Currency;
-        if (ownedSkins.Contains(skin) || cost > currency)
+        if (index > 15) // Achievement Skins
         {
-            Debug.Log("You either dont have enough money or already own this skin");
-            return;
+
         }
+        else
+        {
+            int cost = allSkins[index].cost; 
+            int currency = SaveDataController.Instance.current.Currency;
+            if (ownedSkins.Contains(skin) || cost > currency)
+            {
+                Debug.Log("You either dont have enough money or already own this skin");
+                return;
+            }
     
         
-        SaveDataController.Instance.current.Currency = currency - cost;
-        SaveDataController.Instance.current.UnlockedSkins.Skins.Add(skin);
-        Debug.Log($"You bought Skin Number {index} for {cost} and now have {currency}.");
+            SaveDataController.Instance.current.Currency = currency - cost;
+            SaveDataController.Instance.current.UnlockedSkins.Skins.Add(skin);
+            Debug.Log($"You bought Skin Number {index} for {cost} and now have {currency}.");
+
+        }
     }
 }

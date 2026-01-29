@@ -421,39 +421,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSkins:
   - skin: {fileID: 6990399261752627054, guid: fd46d467862e07742b97403a843a940c, type: 3}
-    cost: 0
+    cost: 20
   - skin: {fileID: 1749682408935572165, guid: ef7a91b439d37ee4b986d1614f3dc13b, type: 3}
-    cost: 0
+    cost: 20
   - skin: {fileID: 6650065319712622247, guid: fc77d01eb040440498eeb66b57947601, type: 3}
-    cost: 0
+    cost: 20
   - skin: {fileID: -7473267161860816559, guid: 22b229a387fd38d408a624db8b8892d3, type: 3}
-    cost: 0
-  - skin: {fileID: 0}
-    cost: 0
-  - skin: {fileID: 0}
-    cost: 0
-  - skin: {fileID: 0}
-    cost: 0
-  - skin: {fileID: 0}
-    cost: 0
-  - skin: {fileID: 0}
-    cost: 0
-  - skin: {fileID: 0}
-    cost: 0
-  - skin: {fileID: 0}
-    cost: 0
-  - skin: {fileID: 0}
-    cost: 0
-  - skin: {fileID: 0}
-    cost: 0
-  - skin: {fileID: 0}
-    cost: 0
-  - skin: {fileID: 0}
-    cost: 0
-  - skin: {fileID: 0}
-    cost: 0
-  - skin: {fileID: 0}
-    cost: 0
+    cost: 20
+  - skin: {fileID: -7031342724676821723, guid: b85fb3670ce72054d8ee1c693ff7d2c8, type: 3}
+    cost: 40
+  - skin: {fileID: -8455567275154235765, guid: deb21c109e4faa940a3e51ddd88a8dcf, type: 3}
+    cost: 40
+  - skin: {fileID: 8608868042378674165, guid: 1ade30565a9170b4ba05f5dd50958168, type: 3}
+    cost: 40
+  - skin: {fileID: -6182571979933470632, guid: 14bd44bf9f151d44282d58527c0cbc67, type: 3}
+    cost: 40
+  - skin: {fileID: 6213981817978701863, guid: 48dbe80ca7b87944db0b8b93405df335, type: 3}
+    cost: 60
+  - skin: {fileID: -492590789218849277, guid: 6fd73c1451fb4f845a722e89ae891e78, type: 3}
+    cost: 60
+  - skin: {fileID: -7005389740968712342, guid: a844c26603cb1374a8435869cc29be9c, type: 3}
+    cost: 60
+  - skin: {fileID: 895786440877891712, guid: 7eb89784ecfd1cc44beec3c2a7c42438, type: 3}
+    cost: 60
+  - skin: {fileID: 4836886626107497808, guid: 40624bb5a2d2cd048819bd80a2c151a0, type: 3}
+    cost: 80
+  - skin: {fileID: 8875648244226585189, guid: ba47a269058ae8145ac3b7e8b71d51c6, type: 3}
+    cost: 80
+  - skin: {fileID: -7963848220640410893, guid: 89c1a78888de03b498f8679507e58896, type: 3}
+    cost: 80
+  - skin: {fileID: -1877348582924719010, guid: 0994172f646b64640b85fface700b929, type: 3}
+    cost: 80
   buttonPrefab: {fileID: 1340370536594825207, guid: d386e14bf415b85478eba24d7f21a527, type: 3}
   skinButtonsTransform: {fileID: 29255843}
 --- !u!1 &1603240364
