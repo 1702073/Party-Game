@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,11 +7,18 @@ public class Pencil : MonoBehaviour
 {
     public GameObject pencilPrefab;
 
-    public List<PencilData> pencils;
+    public List<Transform> pencilSpawnPoints;
+    public float warningTime;
+    public float pencilSpeed;
+
+    public Camera mainCam;
+    public float spawnRadius;
+
+    public Transform pencilTarget;
 
     void Start()
     {
-        
+        mainCam = Camera.main;
     }
 
     void Update()
@@ -22,36 +30,61 @@ public class Pencil : MonoBehaviour
     {
         if(!ctx.performed) return;
 
-        PencilData pencil = pencils[Random.Range(0, pencils.Count)];
+        Transform spawnPoint = pencilSpawnPoints[Random.Range(0, pencilSpawnPoints.Count)];
 
-        SpawnPencil(pencil);
+
+        RandomerPencilSpawn();
+
+        //StartCoroutine(SpwanPencil(spawnPoint));
     }
 
-    public void SpawnPencil(PencilData penkil)
+    public IEnumerator SpwanPencil(Transform spawnpoint)
     {
-        Vector3 startPos = penkil.pencilSpawnPoint.position;
-        Vector3 endPos = -penkil.pencilSpawnPoint.position;
+        Vector2 startPos = spawnpoint.position;
+        Vector2 endPos = -startPos;
 
-        float randomAngle = Random.Range(-penkil.angleRange, penkil.angleRange);
+        Vector2 direction = (endPos - startPos);
 
-        Quaternion rotation = Quaternion.Euler(0, 0, randomAngle);
-        Vector3 spawnDirection = rotation * Vector3.up;
 
-        GameObject pencil = Instantiate(pencilPrefab, penkil.pencilSpawnPoint.position, Quaternion.LookRotation(spawnDirection));
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Vector3 rotation = new Vector3(0, 0, angle + 90);
 
-        //Rigidbody2D rb = pencil.GetComponent<Rigidbody2D>();
+        GameObject pencil = Instantiate(pencilPrefab, spawnpoint.position, Quaternion.identity);
 
-        //if(rb != null)
+        pencil.transform.rotation = Quaternion.Euler(rotation);
+
+        Rigidbody2D rb = pencil.GetComponent<Rigidbody2D>();
+
+        yield return new WaitForSeconds(warningTime);
+
+
+        if (rb != null)
         {
-            //rb.linearVelocity = spawnDirection * penkil.pencilSpeed;
+            rb.linearVelocity = direction * pencilSpeed;
+        }
+
+        Destroy(pencil, 2f);
+
+        yield break;
+    }
+
+    public void RandomerPencilSpawn()
+    {
+        float randomX = Random.Range(0f, 1f);
+        float randomY = Random.Range(0f, 1f);
+
+        Vector3 viewportPos = new Vector3(randomX, randomY, 0);
+        Vector3 spawnPosition = mainCam.ViewportToWorldPoint(new Vector3(viewportPos.x, viewportPos.y, 0));
+
+        pencilTarget.position = spawnPosition
+;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(collision.gameObject);
         }
     }
-}
-
-[System.Serializable]
-public struct PencilData
-{
-    public Transform pencilSpawnPoint;
-    public float pencilSpeed;
-    public float angleRange;
 }
