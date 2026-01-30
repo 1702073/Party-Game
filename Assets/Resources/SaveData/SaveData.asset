@@ -15,8 +15,8 @@ MonoBehaviour:
   _saveData:
     UnlockedSkins:
       Skins:
-      - {fileID: 21300000, guid: c81ab308cd9e5ac4fba180761ea3b830, type: 3}
-      - {fileID: 21300000, guid: b2dd5cf49acedbe41957b0397d55e4f5, type: 3}
-      - {fileID: 21300000, guid: c0f65ac44d2958c48825eeda00067a6f, type: 3}
-      - {fileID: 21300000, guid: cf6f1ec010f30894ba36b95b1b70b28d, type: 3}
+      - {fileID: 4669053132774885742, guid: 8a379ed165898544a84c11e026e11ad5, type: 3}
+      - {fileID: -8900542069988486452, guid: 2a78fdfc0ec54e044b60748c65b584fc, type: 3}
+      - {fileID: 1056924404493532524, guid: d7ba0f2b339fcc7408c2299cb6ac1787, type: 3}
+      - {fileID: -6685729072220316267, guid: 77a69898f0f8b874c901fda5627c0350, type: 3}
     Currency: 10000
