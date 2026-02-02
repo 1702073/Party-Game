@@ -517,6 +517,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 99cbeabc-b00d-4dc9-a7aa-aebdc7f0533a
+    m_ActionName: 'Player/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -543,7 +547,7 @@ MonoBehaviour:
   - {fileID: 340261009}
   - {fileID: 530727400}
   warningTime: 1
-  pencilSpeed: 15
+  pencilSpeed: 20
   mainCam: {fileID: 1446507079}
   spawnRadius: 15
   pencilTarget: {fileID: 794258728}
@@ -595,6 +599,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -181.23}
+--- !u!1001 &1185527484
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2090998606473602836, guid: 324910f6c79f72a46b7b3c17826c26e6, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328043571404806301, guid: 324910f6c79f72a46b7b3c17826c26e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5871242
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328043571404806301, guid: 324910f6c79f72a46b7b3c17826c26e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.028969942
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328043571404806301, guid: 324910f6c79f72a46b7b3c17826c26e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328043571404806301, guid: 324910f6c79f72a46b7b3c17826c26e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328043571404806301, guid: 324910f6c79f72a46b7b3c17826c26e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328043571404806301, guid: 324910f6c79f72a46b7b3c17826c26e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328043571404806301, guid: 324910f6c79f72a46b7b3c17826c26e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328043571404806301, guid: 324910f6c79f72a46b7b3c17826c26e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328043571404806301, guid: 324910f6c79f72a46b7b3c17826c26e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328043571404806301, guid: 324910f6c79f72a46b7b3c17826c26e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 324910f6c79f72a46b7b3c17826c26e6, type: 3}
 --- !u!1 &1446507077
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,3 +1009,4 @@ SceneRoots:
   - {fileID: 9088769785362867504}
   - {fileID: 794258728}
   - {fileID: 281865082}
+  - {fileID: 1185527484}
