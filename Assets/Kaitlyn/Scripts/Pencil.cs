@@ -15,10 +15,14 @@ public class Pencil : MonoBehaviour
     public float spawnRadius;
 
     public Transform pencilTarget;
+    public Transform pencilSpawnPos;
+
+    public float pencilSpawnTime; // how often pencils spawn
 
     void Start()
     {
         mainCam = Camera.main;
+        InvokeRepeating("PencilToSpawn", 3f, pencilSpawnTime);
     }
 
     void Update()
@@ -26,14 +30,14 @@ public class Pencil : MonoBehaviour
         
     }
 
-    public void PencilToSpawn(InputAction.CallbackContext ctx)
+    public void PencilToSpawn() // originally for the manual spawn but invoke repeating needs a void so ill use this InputAction.CallbackContext ctx
     {
-        if(!ctx.performed) return;
+        //if(!ctx.performed) return;
 
         Transform spawnPoint = pencilSpawnPoints[Random.Range(0, pencilSpawnPoints.Count)];
 
 
-        RandomerPencilSpawn();
+        StartCoroutine(RandomerPencilSpawn());
 
         //StartCoroutine(SpwanPencil(spawnPoint));
     }
@@ -60,24 +64,54 @@ public class Pencil : MonoBehaviour
 
         if (rb != null)
         {
-            rb.linearVelocity = direction * pencilSpeed;
+            rb.linearVelocity = direction.normalized * pencilSpeed;
         }
 
         Destroy(pencil, 2f);
 
         yield break;
-    }
+    } // fallback manual spawner
 
-    public void RandomerPencilSpawn()
+    public IEnumerator RandomerPencilSpawn()
     {
         float randomX = Random.Range(0f, 1f);
         float randomY = Random.Range(0f, 1f);
 
         Vector3 viewportPos = new Vector3(randomX, randomY, 0);
-        Vector3 spawnPosition = mainCam.ViewportToWorldPoint(new Vector3(viewportPos.x, viewportPos.y, 0));
+        Vector3 targetPosition = mainCam.ViewportToWorldPoint(new Vector3(viewportPos.x, viewportPos.y, 0));
 
-        pencilTarget.position = spawnPosition
-;
+        Vector2 spawnDirection = Random.insideUnitCircle.normalized;
+        Vector3 spawnPos = mainCam.transform.position + new Vector3(spawnDirection.x, spawnDirection.y, 0) * spawnRadius;
+        spawnPos.z = 0;
+        Vector3 viewPoint = mainCam.WorldToViewportPoint(spawnPos);
+
+       
+
+        pencilTarget.position = targetPosition;
+        pencilSpawnPos.position = spawnPos;
+
+        Vector2 direction = (targetPosition - spawnPos);
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Vector3 rotation = new Vector3(0, 0, angle + 90);
+
+        GameObject pencil = Instantiate(pencilPrefab,spawnPos, Quaternion.identity);
+
+        pencil.transform.rotation = Quaternion.Euler(rotation);
+
+        Rigidbody2D rb = pencil.GetComponent<Rigidbody2D>();
+
+        yield return new WaitForSeconds(warningTime);
+
+
+        if (rb != null)
+        {
+            rb.linearVelocity = direction.normalized * pencilSpeed;
+        }
+
+        Destroy(pencil, 2f);
+
+        yield break;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
