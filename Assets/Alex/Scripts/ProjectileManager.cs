@@ -5,6 +5,8 @@ public class ProjectileManager : MonoBehaviour
 {
     [SerializeField] private GameObject spinningBlade;
     [SerializeField] private GameObject warningPrefab;
+    [SerializeField] private GameObject bombPrefab;
+
     [SerializeField] private float warningDuration;
     [SerializeField] private float spinCooldown;
     [SerializeField] private float spinSpeed = .5f;
@@ -13,26 +15,26 @@ public class ProjectileManager : MonoBehaviour
     private void Start()
     {
         spinningBlade = Resources.Load<GameObject>("Prefabs/Blade");
-        StartCoroutine(spawnBlade());
+        StartCoroutine(SpawnBlade());
+        InvokeRepeating(nameof(SpawnBomb), 2f, 2f);
     }
 
-    private IEnumerator spawnBlade()
+    private IEnumerator SpawnBlade()
     {
         GameObject warning = Instantiate(warningPrefab);
         yield return new WaitForSeconds(warningDuration);
         Destroy(warning);
         spinningBlade = Instantiate(spinningBlade);
-        InvokeRepeating(nameof(spinBlade), 0f, 0.05f);
         yield break;
-
-
     }
 
-    private void spinBlade()
+    private void SpawnBomb()
     {
-        spinningBlade.transform.Rotate(new Vector3(0, 0, spinSpeed));
+        Vector3 spawnPos = new (Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0f);
+        GameObject bomb = Instantiate(bombPrefab, spawnPos, Quaternion.identity);
     }
-    
+
+ 
 
 
 
