@@ -18,7 +18,14 @@ public class PencilTrigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            if(collision.gameObject.TryGetComponent(out DeathAndDespair deathAndDespair))
+            {              
+                StartCoroutine(deathAndDespair.Death());
+            }
+            else
+            {
+                Debug.Log(":pensive:");
+            }
         }
     }
 }

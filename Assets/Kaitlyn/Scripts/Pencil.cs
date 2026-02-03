@@ -70,15 +70,14 @@ public class Pencil : MonoBehaviour
         Destroy(pencil, 2f);
 
         yield break;
-    } // fallback manual spawner
+    } // fallback manual spawner 
 
     public IEnumerator RandomerPencilSpawn()
     {
-        float randomX = Random.Range(0f, 1f);
-        float randomY = Random.Range(0f, 1f);
+        float randomX = Random.Range(-10f, 10f);
+        float randomY = Random.Range(-10f, 10f);
 
-        Vector3 viewportPos = new Vector3(randomX, randomY, 0);
-        Vector3 targetPosition = mainCam.ViewportToWorldPoint(new Vector3(viewportPos.x, viewportPos.y, 0));
+        Vector3 targetPosition =new Vector3(randomX, randomY, 0);
 
         Vector2 spawnDirection = Random.insideUnitCircle.normalized;
         Vector3 spawnPos = mainCam.transform.position + new Vector3(spawnDirection.x, spawnDirection.y, 0) * spawnRadius;
