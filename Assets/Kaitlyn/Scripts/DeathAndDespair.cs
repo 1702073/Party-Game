@@ -7,7 +7,7 @@ public class DeathAndDespair : MonoBehaviour
     public float deathAnimDuration = .3f;
     private bool isDying = false;
 
-    private static int playerCount;
+    private int playerCount;
 
     void Start()
     {
@@ -23,24 +23,38 @@ public class DeathAndDespair : MonoBehaviour
     {
         playerCount--;
 
-        if(playerCount <= 0)
-        {
-            // grab the time snd stuff here
-            yield break;
-        }
-
         StartCoroutine(ScaleOverTime(Vector3.zero, deathAnimDuration));
 
         if (isDying)
         {
-            yield return null;
+            Debug.Log("gleebus");
+            yield return new WaitUntil(() => !isDying);
+            Debug.Log("second gleebus"); 
+            Destroy(this.gameObject);
         }
         else
         {
+            if (playerCount <= 0)
+            {
+                // grab the time snd stuff here
+                Debug.Log("lowk won typ sh");
+                Destroy(this.gameObject);
+            }
+
+            Debug.Log("and death. (judy hopps)");
             Destroy(this.gameObject);
         }
 
-        yield break;
+        if (playerCount <= 0)
+        {
+            // grab the time snd stuff here
+            Debug.Log("lowk won typ sh2");
+            Destroy(this.gameObject);
+        }
+
+        Debug.Log("im crine");
+        Destroy(this.gameObject);
+        yield return null;
     }
 
     private IEnumerator ScaleOverTime(Vector3 targetScale, float duration)
@@ -62,5 +76,14 @@ public class DeathAndDespair : MonoBehaviour
         transform.localScale = targetScale;
 
         isDying = false;
+    }
+
+    public void ReadPlayers()
+    {
+
+        for (int i = 0; i < PlayerInputManager.instance.playerCount; i++)
+        {
+            
+        }
     }
 }
