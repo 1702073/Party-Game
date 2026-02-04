@@ -12,5 +12,5 @@ public struct SaveData
 [Serializable]
 public class SkinList
 {
-    public List<Sprite> Skins; //To access this use SaveDataController.Instance.current.UnlockedSkins.Skins    
+    public List<string> Skins; //To access this use SaveDataController.Instance.current.UnlockedSkins.Skins    
 }

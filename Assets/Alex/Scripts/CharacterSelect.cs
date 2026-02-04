@@ -1,6 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -13,7 +13,6 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField] private Canvas canvas;
     private int currentCount;
     private GameObject skinSelectButton;
-    private List<Sprite> skins = new();
     [SerializeField] private Sprite test;
 
 
@@ -23,7 +22,7 @@ public class CharacterSelect : MonoBehaviour
         skinSelectButton = Resources.Load<GameObject>("Prefabs/SelectButton");
         for (int i = 0; i < InputSystem.devices.Count; ++i)
         {
-            var device = InputSystem.devices[i]; //if (player.GetComponent<PlayerInput>().currentControlScheme == "Gamepad") //
+            var device = InputSystem.devices[i]; 
             if (device is Keyboard || device is Gamepad)
             {
                 selectedSkins.Add(null);
@@ -43,25 +42,20 @@ public class CharacterSelect : MonoBehaviour
 
     void Start()
     {
-        skins = SaveDataController.Instance.current.UnlockedSkins.Skins;
         Vector3 pos = new (-100f, 100f, 0f);
         List<GameObject> buttons = new();
-        for (int i = 0; i < skins.Count; i++)
+        for (int i = 0; i < SaveDataController.Instance.current.UnlockedSkins.Skins.Count; i++)
         {
-            Sprite skin = skins[i];
+            Sprite skin = Resources.Load<Sprite>($"Player Skins/{SaveDataController.Instance.current.UnlockedSkins.Skins[i]}");
+            
             GameObject select = Instantiate(skinSelectButton, canvas.GetComponent<RectTransform>());
             buttons.Add(select);
-            select.GetComponent<Button>().onClick.AddListener(() => Buy(select));
+            buttons[i].GetComponent<Image>().sprite = skin;
+            //select.GetComponent<Button>().onClick.AddListener(() => Buy(select));
 
             select.GetComponent<RectTransform>().anchoredPosition = pos;
             pos += new Vector3 (-170f, 0f, 0f);
         }
-
-        for (int i = 0; i < buttons.Count; i++) // I dont understand why this is needed but it breaks in the other for loop
-        {
-            buttons[i].GetComponent<Image>().sprite = skins[i];
-        }
-
     }
 
     void Update()
@@ -69,9 +63,6 @@ public class CharacterSelect : MonoBehaviour
         
     }
 
-    private void Select(GameObject buttonGO)
-    {
-        
-    }
+
 
 }

@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class CursorScript : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class CursorScript : MonoBehaviour
     
 
     private InputAction lookAction;
+    private InputAction clickAction;
+
     //playerInput = GetComponent<PlayerInput>();
 
     private void Awake()
@@ -29,6 +33,7 @@ public class CursorScript : MonoBehaviour
     {
         
         lookAction = cursorInput.actions["Look"];
+        clickAction = cursorInput.actions["Attack"];
     }
 
     void Update()
@@ -37,6 +42,27 @@ public class CursorScript : MonoBehaviour
         pos += dir * cursorSpeed * Time.deltaTime;
         ClampCursor();
         cursorTransform.position = pos;
+
+        if (clickAction.WasPerformedThisFrame())
+        {
+            PointerEventData data = new(EventSystem.current)
+            {
+                position = pos
+            };
+
+            List<RaycastResult> result = new ();
+            EventSystem.current.RaycastAll(data, result);
+
+            foreach (var hit in result)
+            {
+                
+                if (hit.gameObject.GetComponent<Button>() != null)
+                {
+                    cursorInput.gameObject.GetComponent<SpriteRenderer>().sprite = hit.gameObject.GetComponent<Image>().sprite; 
+                }
+                
+            }
+        }
     }
 
     private void ClampCursor() //This part is more or less not needed but it'll work for multiple cameras
