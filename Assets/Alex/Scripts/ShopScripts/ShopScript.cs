@@ -22,8 +22,10 @@ public class ShopScript : MonoBehaviour
 
         for (int i = 0; i < 16; i++)
         {
+            int currentIndex = i;
             GameObject newButton = Instantiate(buttonPrefab, skinButtonsTransform);
             newButton.GetComponent<Image>().sprite = allSkins[i].skin;
+            newButton.GetComponent<Button>().onClick.AddListener(() => Buy(currentIndex));
             RectTransform rect = newButton.GetComponent<RectTransform>();
 
             int column = i /4;
@@ -49,7 +51,7 @@ public class ShopScript : MonoBehaviour
         Sprite skin = allSkins[index].skin; 
         if (index > 15) // Achievement Skins
         {
-
+            
         }
         else
         {
@@ -64,7 +66,7 @@ public class ShopScript : MonoBehaviour
         
             SaveDataController.Instance.current.Currency = currency - cost;
             SaveDataController.Instance.current.UnlockedSkins.Skins.Add(skin);
-            Debug.Log($"You bought Skin Number {index} for {cost} and now have {currency}.");
+            Debug.Log($"You bought Skin Number {index} for {cost} and now have {currency - cost}.");
 
         }
     }

@@ -452,6 +452,26 @@ MonoBehaviour:
     cost: 80
   - skin: {fileID: -1877348582924719010, guid: 0994172f646b64640b85fface700b929, type: 3}
     cost: 80
+  - skin: {fileID: -1877348582924719010, guid: 0994172f646b64640b85fface700b929, type: 3}
+    cost: 80
+  - skin: {fileID: -1877348582924719010, guid: 0994172f646b64640b85fface700b929, type: 3}
+    cost: 80
+  - skin: {fileID: -1877348582924719010, guid: 0994172f646b64640b85fface700b929, type: 3}
+    cost: 80
+  - skin: {fileID: -1877348582924719010, guid: 0994172f646b64640b85fface700b929, type: 3}
+    cost: 80
+  - skin: {fileID: -1877348582924719010, guid: 0994172f646b64640b85fface700b929, type: 3}
+    cost: 80
+  - skin: {fileID: -1877348582924719010, guid: 0994172f646b64640b85fface700b929, type: 3}
+    cost: 80
+  - skin: {fileID: -1877348582924719010, guid: 0994172f646b64640b85fface700b929, type: 3}
+    cost: 80
+  - skin: {fileID: -1877348582924719010, guid: 0994172f646b64640b85fface700b929, type: 3}
+    cost: 80
+  - skin: {fileID: -1877348582924719010, guid: 0994172f646b64640b85fface700b929, type: 3}
+    cost: 80
+  - skin: {fileID: -1877348582924719010, guid: 0994172f646b64640b85fface700b929, type: 3}
+    cost: 80
   buttonPrefab: {fileID: 1340370536594825207, guid: d386e14bf415b85478eba24d7f21a527, type: 3}
   skinButtonsTransform: {fileID: 29255843}
 --- !u!1 &1603240364
