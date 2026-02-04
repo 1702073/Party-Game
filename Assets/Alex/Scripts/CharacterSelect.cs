@@ -26,6 +26,7 @@ public class CharacterSelect : MonoBehaviour
             var device = InputSystem.devices[i]; //if (player.GetComponent<PlayerInput>().currentControlScheme == "Gamepad") //
             if (device is Keyboard || device is Gamepad)
             {
+                selectedSkins.Add(null);
                 var input = playerInputManager.JoinPlayer(pairWithDevice: device);
                 DontDestroyOnLoad(input.gameObject);
                 if (device is Gamepad)
@@ -50,6 +51,8 @@ public class CharacterSelect : MonoBehaviour
             Sprite skin = skins[i];
             GameObject select = Instantiate(skinSelectButton, canvas.GetComponent<RectTransform>());
             buttons.Add(select);
+            select.GetComponent<Button>().onClick.AddListener(() => Buy(select));
+
             select.GetComponent<RectTransform>().anchoredPosition = pos;
             pos += new Vector3 (-170f, 0f, 0f);
         }
@@ -62,6 +65,11 @@ public class CharacterSelect : MonoBehaviour
     }
 
     void Update()
+    {
+        
+    }
+
+    private void Select(GameObject buttonGO)
     {
         
     }
