@@ -32,13 +32,21 @@ public class Timerexample : MonoBehaviour
     }
     public void stop()
     {
-        str = false;
-        money = (int)val;
+        str = false;      
     }
     public void Reset()
     {
+        AddMoney();
+
         str = false;
         val = 0;
+    }
+
+    public void AddMoney()
+    {
+        money += (int)val;
+
+        moneyText.text = money.ToString();
     }
 
 }

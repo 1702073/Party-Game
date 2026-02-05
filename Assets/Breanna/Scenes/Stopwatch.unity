@@ -366,7 +366,7 @@ MonoBehaviour:
   Disvar: {fileID: 1261527218}
   val: 0
   money: 0
-  moneyText: {fileID: 0}
+  moneyText: {fileID: 1803055452}
 --- !u!4 &565751924
 Transform:
   m_ObjectHideFlags: 0
@@ -1349,7 +1349,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1987269501}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Timerexample, Assembly-CSharp
         m_MethodName: 
         m_Mode: 1
@@ -1399,37 +1399,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860630317}
   m_CullTransparentMesh: 1
---- !u!1 &1987269501
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1987269503}
-  m_Layer: 0
-  m_Name: Money
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1987269503
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987269501}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 996.3031, y: 102.85301, z: -3.9336317}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2061697806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1574,4 +1543,3 @@ SceneRoots:
   - {fileID: 1235890444}
   - {fileID: 279770031}
   - {fileID: 565751924}
-  - {fileID: 1987269503}
