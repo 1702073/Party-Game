@@ -1,19 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using System.Linq;
 
-public class CursorScript : MonoBehaviour
+
+public class CursorScript : MonoBehaviour //linq all
 {
 
     [SerializeField] private float cursorSpeed = 560f;
+    private Sprite[] allSkins;
     private Camera _camera;
     private RectTransform cursorTransform;
     private Vector2 pos;
     private Vector2 dir;
     public PlayerInput cursorInput;
-    
+    public CharacterSelect characterSelect;
 
     private InputAction lookAction;
     private InputAction clickAction;
@@ -22,6 +25,7 @@ public class CursorScript : MonoBehaviour
 
     private void Awake()
     {
+        allSkins = Resources.LoadAll<Sprite>("Player Skins");
         _camera = Camera.main;
         cursorTransform = GetComponent<RectTransform>();
         Rect r = _camera.rect;
@@ -58,7 +62,12 @@ public class CursorScript : MonoBehaviour
                 
                 if (hit.gameObject.GetComponent<Button>() != null)
                 {
-                    cursorInput.gameObject.GetComponent<SpriteRenderer>().sprite = hit.gameObject.GetComponent<Image>().sprite; 
+                    Sprite buttonSprite = hit.gameObject.GetComponent<Image>().sprite;
+                    if (allSkins.Contains(buttonSprite))
+                    {
+                        characterSelect.ChangeSprite(cursorInput.gameObject, hit.gameObject.GetComponent<Image>().sprite);
+
+                    }
                 }
                 
             }
