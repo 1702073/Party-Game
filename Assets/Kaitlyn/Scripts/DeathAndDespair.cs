@@ -5,9 +5,8 @@ using UnityEngine.InputSystem;
 public class DeathAndDespair : MonoBehaviour
 {
     public float deathAnimDuration = .3f;
-    private bool isDying = false;
 
-    private int playerCount;
+    private static int playerCount;
 
     void Start()
     {
@@ -25,7 +24,7 @@ public class DeathAndDespair : MonoBehaviour
 
         if (playerCount <= 0)
         {
-            StartCoroutine(ScaleOverTime(Vector3.zero, deathAnimDuration)); // this coroutine destroys teh player at the end :man_juggling:
+            StartCoroutine(ScaleOverTime(Vector3.zero, deathAnimDuration)); // this coroutine destroys the player at the end :man_juggling:
             Debug.Log("lowk won typ sh2");           
             yield break;
         }
