@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerJoin : MonoBehaviour
 {
@@ -8,11 +9,7 @@ public class PlayerJoin : MonoBehaviour
     public void PlayerJoined(PlayerInput player)
     {
         players.Add(player.gameObject);
-
-        //if (player.GetComponent<PlayerInput>().currentControlScheme == "Gamepad")
-        //{
-        //    GameObject cursor = Instantiate(cursorPrefab, canvasTransform);
-        //}
+        
     }
 
 }

@@ -2,15 +2,21 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Mono.Cecil.Cil;
 
 public class ShopScript : MonoBehaviour
 {
-    [SerializeField] private List<ShopData> allSkins;
+    private ShopData[] allSkins;
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private RectTransform skinButtonsTransform;
 
     private int buttonNumber;
- 
+
+    private void Awake()
+    {
+        allSkins = Resources.LoadAll<ShopData>("Skins");
+    }
+
     void Start()
     {
         float xStep = 188f / skinButtonsTransform.rect.width;
@@ -22,8 +28,10 @@ public class ShopScript : MonoBehaviour
 
         for (int i = 0; i < 16; i++)
         {
+            int currentIndex = i;
             GameObject newButton = Instantiate(buttonPrefab, skinButtonsTransform);
             newButton.GetComponent<Image>().sprite = allSkins[i].skin;
+            newButton.GetComponent<Button>().onClick.AddListener(() => Buy(currentIndex));
             RectTransform rect = newButton.GetComponent<RectTransform>();
 
             int column = i /4;
@@ -45,17 +53,18 @@ public class ShopScript : MonoBehaviour
     public void Buy(int index)
     {
         Debug.Log("EEE" + index.ToString());
-        List<Sprite> ownedSkins = SaveDataController.Instance.current.UnlockedSkins.Skins;
-        Sprite skin = allSkins[index].skin; 
+        var ownedSkins = SaveDataController.Instance.current.UnlockedSkins.Skins;
+        var skin = allSkins[index]; 
+
         if (index > 15) // Achievement Skins
         {
-
+            
         }
         else
         {
             int cost = allSkins[index].cost; 
             int currency = SaveDataController.Instance.current.Currency;
-            if (ownedSkins.Contains(skin) || cost > currency)
+            if (ownedSkins.Contains(skin.skin.name) || cost > currency)
             {
                 Debug.Log("You either dont have enough money or already own this skin");
                 return;
@@ -63,8 +72,8 @@ public class ShopScript : MonoBehaviour
     
         
             SaveDataController.Instance.current.Currency = currency - cost;
-            SaveDataController.Instance.current.UnlockedSkins.Skins.Add(skin);
-            Debug.Log($"You bought Skin Number {index} for {cost} and now have {currency}.");
+            SaveDataController.Instance.current.UnlockedSkins.Skins.Add(skin.skin.name);
+            Debug.Log($"You bought Skin Number {index} for {cost} and now have {currency - cost}.");
 
         }
     }

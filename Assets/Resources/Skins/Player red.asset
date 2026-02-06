@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d5f6740b4a8c3499e6156456d36fbf, type: 3}
-  m_Name: SaveData
+  m_Script: {fileID: 11500000, guid: e463f67c3721b9649be5fc5798e50721, type: 3}
+  m_Name: Player red
   m_EditorClassIdentifier: 
-  _saveData:
-    UnlockedSkins:
-      Skins:
-      - player blue
-      - player red
-      - player orange
-      - player green
-    Currency: 10000
+  skin: {fileID: -8900542069988486452, guid: 2a78fdfc0ec54e044b60748c65b584fc, type: 3}
+  cost: 0
