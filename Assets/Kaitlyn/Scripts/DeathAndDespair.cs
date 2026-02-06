@@ -23,34 +23,22 @@ public class DeathAndDespair : MonoBehaviour
     {
         playerCount--;
 
-        StartCoroutine(ScaleOverTime(Vector3.zero, deathAnimDuration));
-
-        while (isDying)
-        {
-            yield return null;
-        }
-
-        Debug.Log("pls pl spls pls pls pls");
-
         if (playerCount <= 0)
         {
-            // grab the time snd stuff here
-            Debug.Log("lowk won typ sh2");
-            Destroy(this.gameObject);
+            StartCoroutine(ScaleOverTime(Vector3.zero, deathAnimDuration)); // this coroutine destroys teh player at the end :man_juggling:
+            Debug.Log("lowk won typ sh2");           
+            yield break;
         }
         else
         {
+            StartCoroutine(ScaleOverTime(Vector3.zero, deathAnimDuration));
             Debug.Log("im crine");
-            Destroy(this.gameObject);
             yield return null;
-
         }
-
     }
 
     private IEnumerator ScaleOverTime(Vector3 targetScale, float duration)
     {
-        isDying = true;
         Vector3 initialScale = transform.localScale;
         float elapsedTime = 0f;
 
@@ -67,9 +55,7 @@ public class DeathAndDespair : MonoBehaviour
 
         transform.localScale = targetScale;
 
-        isDying = false;
-
-        Debug.Log("derp");
+        Destroy(this.gameObject);
     }
 
     public void ReadPlayers()
