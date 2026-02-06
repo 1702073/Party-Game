@@ -102,6 +102,7 @@ public class CharacterSelect : MonoBehaviour
         }
 
         SceneManager.LoadScene("GameScene");
+        Destroy(this);
         
     }
 
