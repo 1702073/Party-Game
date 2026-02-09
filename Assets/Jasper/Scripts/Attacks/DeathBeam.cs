@@ -71,6 +71,8 @@ public class DeathBeam : MonoBehaviour
                     soundToPlay = warningSound1;
                 }
 
+                audioSource.pitch = 1;
+
                 // Play warning sound if warning is active
                 if (warning.activeSelf)
                 {
@@ -93,10 +95,13 @@ public class DeathBeam : MonoBehaviour
 
                 beamDuration -= Time.deltaTime;
 
+                audioSource.pitch = Random.Range(0.8f, 1.2f); // Pitch variation
+
                 // Play fire sound
                 if (fireSoundTimer > 0) {
                     fireSoundTimer -= Time.deltaTime;
                 } else {
+                    
                     audioSource.PlayOneShot(fireSound);
                     fireSoundTimer = 0.25f;
                 }

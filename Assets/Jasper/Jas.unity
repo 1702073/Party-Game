@@ -154,7 +154,7 @@ MonoBehaviour:
   warningSound1: {fileID: 8300000, guid: 56a034b49a70ff1459d0dcdc28732ef8, type: 3}
   warningSound2: {fileID: 8300000, guid: cc93acc3e18c83e4682ce4e2c2a90718, type: 3}
   fireSound: {fileID: 8300000, guid: a8673d7877a04e34baaaeb053b10b88d, type: 3}
-  width: 4
+  width: 3
   warningDuration: 2
   warningColor: {r: 0.76862746, g: 0, b: 0, a: 0.49803922}
   beamDuration: 1
