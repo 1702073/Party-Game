@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class SkinSelectScript : MonoBehaviour
 {
-    public SceneField scene;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,10 +12,5 @@ public class NewMonoBehaviourScript : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void press()
-    {
-        SceneManager.LoadScene(scene);
     }
 }
