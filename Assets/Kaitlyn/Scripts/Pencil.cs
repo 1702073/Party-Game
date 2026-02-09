@@ -22,7 +22,7 @@ public class Pencil : MonoBehaviour
     void Start()
     {
         mainCam = Camera.main;
-        InvokeRepeating("PencilToSpawn", 3f, pencilSpawnTime);
+        InvokeRepeating("PencilToSpawn", pencilSpawnTime, pencilSpawnTime);
     }
 
     void Update()
@@ -34,7 +34,7 @@ public class Pencil : MonoBehaviour
     {
         //if(!ctx.performed) return;
 
-        Transform spawnPoint = pencilSpawnPoints[Random.Range(0, pencilSpawnPoints.Count)];
+        //Transform spawnPoint = pencilSpawnPoints[Random.Range(0, pencilSpawnPoints.Count)];
 
 
         StartCoroutine(RandomerPencilSpawn());
@@ -74,8 +74,8 @@ public class Pencil : MonoBehaviour
 
     public IEnumerator RandomerPencilSpawn()
     {
-        float randomX = Random.Range(-10f, 10f);
-        float randomY = Random.Range(-10f, 10f);
+        float randomX = Random.Range(-6f, 6f);
+        float randomY = Random.Range(-6f, 6f);
 
         Vector3 targetPosition =new Vector3(randomX, randomY, 0);
 
