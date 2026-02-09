@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using Mono.Cecil.Cil;
 
 public class ShopScript : MonoBehaviour
 {
     private ShopData[] allSkins;
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private RectTransform skinButtonsTransform;
+    [SerializeField] private List<Image> selectedSkins;
+
 
     private int buttonNumber;
 
