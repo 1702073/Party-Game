@@ -8,6 +8,9 @@ public class DeathBeam : MonoBehaviour
     public GameObject warning;
     public GameObject beam;
     AudioSource audioSource;
+    public GameObject particle;
+    ParticleSystem system;
+    ParticleSystemShapeType shapeType;
 
     // Sounds
     [Header("Sounds")]
@@ -44,12 +47,17 @@ public class DeathBeam : MonoBehaviour
 
         beam.GetComponent<SpriteRenderer>().color = beamColor;
         audioSource = GetComponent<AudioSource>();
+        system = particle.GetComponent<ParticleSystem>();
+        shapeType = ParticleSystemShapeType.Rectangle;
+
+        system.startColor = beamColor;
     }
 
     void Update()
     {
         // Warning
-        if (warningDuration > 0) {
+        if (warningDuration > 0)
+        {
             warningDuration -= Time.deltaTime;
             warningFlashTime -= Time.deltaTime;
 
@@ -79,17 +87,24 @@ public class DeathBeam : MonoBehaviour
                     audioSource.PlayOneShot(soundToPlay);
                 }
             }
-        } else if (!beam.activeSelf) {
+        }
+        else if (!beam.activeSelf)
+        {
             // I warned you, now PREPARE TO BE VANQUISHED
             warning.SetActive(false);
             beam.SetActive(true);
+            particle.SetActive(true);
+            system.Play();
         }
 
         // Beam
-        if (beam.activeSelf) {
-            if (beamDuration > 0) {
+        if (beam.activeSelf)
+        {
+            if (beamDuration > 0)
+            {
                 // Enlarge beam to set width
-                if (beam.transform.localScale.x < width) { 
+                if (beam.transform.localScale.x < width)
+                {
                     beam.transform.localScale += new Vector3(Time.deltaTime * (5 * width), 0, 0);
                 }
 
@@ -98,29 +113,42 @@ public class DeathBeam : MonoBehaviour
                 audioSource.pitch = Random.Range(0.8f, 1.2f); // Pitch variation
 
                 // Play fire sound
-                if (fireSoundTimer > 0) {
+                if (fireSoundTimer > 0)
+                {
                     fireSoundTimer -= Time.deltaTime;
-                } else {
-                    
+                }
+                else
+                {
+
                     audioSource.PlayOneShot(fireSound);
                     fireSoundTimer = 0.25f;
                 }
-            } else {
+            }
+            else
+            {
                 // Shrink beam before self destruction
-                if (beam.transform.localScale.x > 0) { 
+                if (beam.transform.localScale.x > 0)
+                {
                     beam.transform.localScale -= new Vector3(Time.deltaTime * (5 * width), 0, 0);
                 }
-                else {
+                else
+                {
                     Destroy(gameObject);
                 }
             }
-        }
 
-        // Clamp beam width
-        beam.transform.localScale = new Vector3(
+            particle.transform.localScale = new Vector3(
+                beam.transform.localScale.x,
+                particle.transform.localScale.y,
+                particle.transform.localScale.z
+            );
+
+            // Clamp beam width
+            beam.transform.localScale = new Vector3(
             Mathf.Clamp(beam.transform.localScale.x, 0, width),
             beam.transform.localScale.y,
             beam.transform.localScale.z
         );
+        }
     }
 }
