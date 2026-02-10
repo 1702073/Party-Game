@@ -6,11 +6,14 @@ public class DeathAndDespair : MonoBehaviour
 {
     public float deathAnimDuration = .3f;
 
-    private int playerCount;
+    private static int playerCount;
+
+    private Timerexample timer;
 
     void Start()
     {
         playerCount = PlayerInputManager.instance.playerCount;
+        timer = FindFirstObjectByType<Timerexample>();
     }
 
     void Update()
@@ -21,9 +24,11 @@ public class DeathAndDespair : MonoBehaviour
     public IEnumerator Death()
     {
         playerCount--;
-
+        Debug.Log($"Player Count {playerCount}");
         if (playerCount <= 0)
         {
+            timer.stop();
+            timer.Reset();
             StartCoroutine(ScaleOverTime(Vector3.zero, deathAnimDuration)); // this coroutine destroys the player at the end :man_juggling:
             Debug.Log("lowk won typ sh2");           
             yield break;
