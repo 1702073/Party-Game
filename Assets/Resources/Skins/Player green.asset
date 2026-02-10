@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e463f67c3721b9649be5fc5798e50721, type: 3}
-  m_Name: Player green
+  m_Name: player green
   m_EditorClassIdentifier: 
   skin: {fileID: 1056924404493532524, guid: d7ba0f2b339fcc7408c2299cb6ac1787, type: 3}
   cost: 0

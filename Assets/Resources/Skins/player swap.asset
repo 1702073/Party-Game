@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e463f67c3721b9649be5fc5798e50721, type: 3}
-  m_Name: player red
+  m_Name: player swap
   m_EditorClassIdentifier: 
-  skin: {fileID: -8900542069988486452, guid: 2a78fdfc0ec54e044b60748c65b584fc, type: 3}
-  cost: 0
+  skin: {fileID: -3670754897931078145, guid: df20eef7eb3acbf4b8aa56212c1c44cf, type: 3}
+  cost: 120
