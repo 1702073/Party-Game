@@ -1,14 +1,15 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Pausing : MonoBehaviour
 {
-    public GameObject PausePanel, Ui;
-    public bool isPaused = false;
+    public GameObject pause;
 
+    public bool isPaused = false;
     
     public void Awake()
     {
-        //Ui = GameObject.find
+        pause = FindFirstObjectByType<PauseMenu>(FindObjectsInactive.Include).gameObject;
     }
 
 
@@ -16,20 +17,20 @@ public class Pausing : MonoBehaviour
     {
         Time.timeScale = 1f;
         isPaused = false;
-        Ui.SetActive(true);
-        PausePanel.SetActive(false);
+        pause.SetActive(false);
     }
 
-    public void Update()
+    public void Toggle(InputAction.CallbackContext ctx)
     {
-        //if (Input.GetKeyDown(pause) && isPaused == false)
-        //{
-        //    Pause();
-        //}
-        //else if (Input.GetKeyDown(pause) && isPaused == true)
-        //{
-        //    Continue();
-        //}
+        if (ctx.performed)
+        {
+            Debug.Log("Toggling Pause");
+
+            if (isPaused)
+                Continue();
+            else
+                Pause();
+        }
     }
 
     public void Pause()
@@ -37,8 +38,7 @@ public class Pausing : MonoBehaviour
         if (isPaused)
             return;
 
-        Ui.SetActive(false);
-        PausePanel.SetActive(true);
+        pause.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
     }
@@ -48,8 +48,7 @@ public class Pausing : MonoBehaviour
         if (!isPaused)
             return;
 
-        Ui.SetActive(true);
-        PausePanel.SetActive(false);
+        pause.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
