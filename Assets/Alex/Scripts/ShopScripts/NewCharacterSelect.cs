@@ -15,7 +15,7 @@ public class NewCharacterSelect : MonoBehaviour
     [SerializeField] private Canvas canvas;
     private int currentCount;
     private GameObject selectdImage;
-    private GameObject[] selectedImages = new GameObject[4];
+    [SerializeField] private GameObject[] selectedImages = new GameObject[4];
     private Dictionary<GameObject, Sprite> _players = new Dictionary<GameObject, Sprite>();
     private GameObject kbm;
 

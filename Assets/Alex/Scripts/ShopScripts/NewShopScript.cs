@@ -9,11 +9,12 @@ public class NewShopScript : MonoBehaviour
 {
 
     private ShopData[] allSkins;
-    [SerializeField] private NewCharacterSelect characterSelect;
+    [SerializeField] public NewCharacterSelect characterSelect;
 
 
     void Start()
     {
+        
         allSkins = Resources.LoadAll<ShopData>("Skins");
     }
 
@@ -31,6 +32,7 @@ public class NewShopScript : MonoBehaviour
         if (ownedSkins.Contains(assetName))
         {
             //Set the players skin
+            Debug.Log("test");
             characterSelect.ChangeSprite(allSkins[index].skin);
         }
 
