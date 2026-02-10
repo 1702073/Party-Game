@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using System.Linq;
 
 
 public class CursorScript : MonoBehaviour //linq all
@@ -16,7 +18,7 @@ public class CursorScript : MonoBehaviour //linq all
     private Vector2 pos;
     private Vector2 dir;
     public PlayerInput cursorInput;
-    public CharacterSelect characterSelect;
+    public NewCharacterSelect characterSelect;
 
     private InputAction lookAction;
     private InputAction clickAction;
@@ -65,7 +67,18 @@ public class CursorScript : MonoBehaviour //linq all
                     Sprite buttonSprite = hit.gameObject.GetComponent<Image>().sprite;
                     if (allSkins.Contains(buttonSprite))
                     {
-                        characterSelect.ChangeSprite(cursorInput.gameObject, hit.gameObject.GetComponent<Image>().sprite);
+                        string assetPath = AssetDatabase.GetAssetPath(buttonSprite);
+                        string assetName = Path.GetFileNameWithoutExtension(assetPath);
+                        var ownedSkins = SaveDataController.Instance.current.UnlockedSkins.Skins;
+                        if (!ownedSkins.Contains(assetName))
+                        {
+                            Debug.Log($"BUY THE THING HERE {assetName}");
+                            hit.gameObject.GetComponent<Button>().onClick.Invoke();
+                        }
+                        else
+                        {
+                            characterSelect.ChangeSprite(cursorInput.gameObject, hit.gameObject.GetComponent<Image>().sprite);
+                        }
 
                     }
                 }
