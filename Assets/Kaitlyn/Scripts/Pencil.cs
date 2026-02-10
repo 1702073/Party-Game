@@ -22,7 +22,7 @@ public class Pencil : MonoBehaviour
     void Start()
     {
         mainCam = Camera.main;
-        InvokeRepeating("PencilToSpawn", pencilSpawnTime, pencilSpawnTime);
+        InvokeRepeating("PencilToSpawn", 2.5f, pencilSpawnTime);
     }
 
     void Update()

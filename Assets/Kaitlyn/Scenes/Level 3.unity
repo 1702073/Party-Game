@@ -1516,11 +1516,11 @@ MonoBehaviour:
   pencilSpawnPoints: []
   warningTime: 1
   pencilSpeed: 25
-  mainCam: {fileID: 0}
+  mainCam: {fileID: 635257090}
   spawnRadius: 25
   pencilTarget: {fileID: 739059213}
   pencilSpawnPos: {fileID: 1788399016}
-  pencilSpawnTime: 2.5
+  pencilSpawnTime: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
