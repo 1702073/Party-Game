@@ -17,7 +17,7 @@ public class NewCharacterSelect : MonoBehaviour
     private GameObject selectdImage;
     [SerializeField] private GameObject[] selectedImages = new GameObject[4];
     private Dictionary<GameObject, Sprite> _players = new Dictionary<GameObject, Sprite>();
-    private GameObject kbm;
+    private static GameObject kbm;
 
     private void Awake()
     {

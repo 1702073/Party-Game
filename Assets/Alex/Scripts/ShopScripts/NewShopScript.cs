@@ -20,7 +20,8 @@ public class NewShopScript : MonoBehaviour
 
    public void Exit()
     {
-        SceneManager.LoadScene(0); //Change this later
+        Debug.Log("bingus");
+        SceneManager.LoadScene("Start Menu"); //gurt: yo.
     }
 
     public void Buy(int index)
