@@ -46,7 +46,8 @@ public class Timerexample : MonoBehaviour
     {
         money += (int)val;
 
-        moneyText.text = money.ToString();
+        if(moneyText != null)
+            moneyText.text = money.ToString();
     }
 
 }

@@ -4,6 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
+<<<<<<< HEAD
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Breanna/Scenes/Start Menu.unity
+    guid: 2fce772fa3b6bf14cb3d9303f5d291cd
+  - enabled: 1
+    path: Assets/Alex/Scenes/Shop.unity
+    guid: 256f43c9be7194c4eb94582017b0e894
+=======
   m_Scenes: []
+>>>>>>> 880bcad4928badb9f158e29f4d28bfdf4be2d7a3
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
