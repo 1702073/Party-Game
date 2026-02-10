@@ -3,53 +3,27 @@ using UnityEngine.InputSystem;
 
 public class Pausing : MonoBehaviour
 {
-    public GameObject pause;
 
-    public bool isPaused = false;
-    
+    Master_Pause masterPause;
+
     public void Awake()
     {
-        pause = FindFirstObjectByType<PauseMenu>(FindObjectsInactive.Include).gameObject;
+        masterPause = FindAnyObjectByType<Master_Pause>(FindObjectsInactive.Include);
     }
-
-
-    public void Start()
-    {
-        Time.timeScale = 1f;
-        isPaused = false;
-        pause.SetActive(false);
-    }
+    
 
     public void Toggle(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
-        {
-            Debug.Log("Toggling Pause");
-
-            if (isPaused)
-                Continue();
-            else
-                Pause();
-        }
+        masterPause.Toggle(ctx);
     }
 
     public void Pause()
     {
-        if (isPaused)
-            return;
-
-        pause.SetActive(true);
-        Time.timeScale = 0f;
-        isPaused = true;
+        masterPause.Pause();
     }
 
     public void Continue()
     {
-        if (!isPaused)
-            return;
-
-        pause.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
+        masterPause.Continue();
     }
 }
