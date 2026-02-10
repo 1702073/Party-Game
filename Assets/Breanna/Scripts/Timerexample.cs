@@ -10,13 +10,16 @@ public class Timerexample : MonoBehaviour
 
     bool str;
 
-    public int money = 0;
+    public int money;
     public TextMeshProUGUI moneyText;
 
     void Start()
     {
+        money = SaveDataController.Instance.current.Currency;
         val = 0;
         str = false;
+
+        start();
     }
     void Update()
     {
@@ -24,7 +27,8 @@ public class Timerexample : MonoBehaviour
         {
             val += Time.deltaTime;
         }
-        Disvar.text = val.ToString();
+        if(Disvar != null)
+            Disvar.text = val.ToString();
     }
     public void start()
     {
@@ -46,7 +50,9 @@ public class Timerexample : MonoBehaviour
     {
         money += (int)val;
 
-        if(moneyText != null)
+        SaveDataController.Instance.current.Currency = money;
+
+        if (moneyText != null)
             moneyText.text = money.ToString();
     }
 

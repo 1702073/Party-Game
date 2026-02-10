@@ -18,9 +18,16 @@ public class NewCharacterSelect : MonoBehaviour
     [SerializeField] private GameObject[] selectedImages = new GameObject[4];
     private Dictionary<GameObject, Sprite> _players = new Dictionary<GameObject, Sprite>();
     private static GameObject kbm;
+    private static bool spawned;
 
     private void Awake()
     {
+        if (spawned)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        spawned = true;
         cursorPrefab = Resources.Load<GameObject>("Prefabs/Cursor");
 
         for (int i = 0; i < InputSystem.devices.Count; ++i)
@@ -64,6 +71,44 @@ public class NewCharacterSelect : MonoBehaviour
         int index = _players.Keys.ToList().IndexOf(kbm);
         selectedImages[index].GetComponent<Image>().sprite = newSkin;
 
+    }
+
+
+    private void Update()
+    {
+        if (playerInputManager.playerCount == 0)
+        {
+            spawned = false;
+            Destroy(gameObject);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Shop" && canvas == null)
+        {
+            GrabReferences();
+        }
+    }
+
+    private void GrabReferences()
+    {
+        canvas = FindAnyObjectByType<Canvas>();
+        GameObject skinImages = GameObject.FindGameObjectWithTag("Selected");
+        int j = 0;
+        foreach (Transform skin in skinImages.transform)
+        {
+            selectedImages[j] = skin.gameObject;
+            j++;
+        }
+        for (int i = 0; i < InputSystem.devices.Count; ++i)
+        {
+            var device = InputSystem.devices[i];
+            if (device is Gamepad)
+            {
+                GameObject cursor = Instantiate(cursorPrefab, canvas.GetComponent<RectTransform>());
+                CursorScript cursorScript = cursor.GetComponent<CursorScript>();
+                cursorScript.cursorInput = FindObjectsByType<PlayerInput>(FindObjectsSortMode.None).First(item => item.devices.Contains(device));
+                cursorScript.characterSelect = this;
+            }
+        }
     }
 
     public void StartGame()
