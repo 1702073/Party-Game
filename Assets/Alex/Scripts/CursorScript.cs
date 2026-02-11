@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -67,8 +67,7 @@ public class CursorScript : MonoBehaviour //linq all
                     Sprite buttonSprite = hit.gameObject.GetComponent<Image>().sprite;
                     if (allSkins.Contains(buttonSprite))
                     {
-                        string assetPath = AssetDatabase.GetAssetPath(buttonSprite);
-                        string assetName = Path.GetFileNameWithoutExtension(assetPath);
+                        string assetName = buttonSprite.texture.name;
                         var ownedSkins = SaveDataController.Instance.current.UnlockedSkins.Skins;
                         if (!ownedSkins.Contains(assetName))
                         {
