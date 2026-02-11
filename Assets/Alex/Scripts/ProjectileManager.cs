@@ -30,7 +30,7 @@ public class ProjectileManager : MonoBehaviour
 
     private void SpawnBomb()
     {
-        Vector3 spawnPos = new (Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0f);
+        Vector3 spawnPos = new (Random.Range(-6f, 6f), Random.Range(-6f, 6f), 0f);
         GameObject bomb = Instantiate(bombPrefab, spawnPos, Quaternion.identity);
     }
 

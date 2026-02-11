@@ -814,6 +814,56 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1014371522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1014371524}
+  - component: {fileID: 1014371523}
+  m_Layer: 0
+  m_Name: ProjectileManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1014371523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014371522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42131340b64741c4db2620543a439751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinningBlade: {fileID: 0}
+  warningPrefab: {fileID: 7387221617928637550, guid: a372dae4d9b98d1489ecd39a56cd2f3c, type: 3}
+  bombPrefab: {fileID: 557462349930653928, guid: 61820cdcc6c54c945baba95df5974dd2, type: 3}
+  warningDuration: 2
+  spinCooldown: 0
+  spinSpeed: 0.5
+--- !u!4 &1014371524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014371522}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1051104359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1643,6 +1693,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 635257091}
   - {fileID: 1676244653}
+  - {fileID: 1014371524}
   - {fileID: 436140837}
   - {fileID: 176523614}
   - {fileID: 1779348133}
