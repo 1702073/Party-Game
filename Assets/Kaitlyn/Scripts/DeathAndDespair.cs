@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class DeathAndDespair : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class DeathAndDespair : MonoBehaviour
 
     private Timerexample timer;
 
+    private bool isDying;
+
     void Start()
     {
         playerCount = PlayerInputManager.instance.playerCount;
-        timer = FindFirstObjectByType<Timerexample>();
     }
 
     void Update()
@@ -21,6 +23,27 @@ public class DeathAndDespair : MonoBehaviour
         
     }
 
+    public void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    public void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Level")
+        {
+            timer = FindFirstObjectByType<Timerexample>();
+        }
+        else
+        {
+            timer = null;
+        }
+    }
     public IEnumerator Death()
     {
         playerCount--;
@@ -30,7 +53,10 @@ public class DeathAndDespair : MonoBehaviour
             timer.stop();
             timer.Reset();
             StartCoroutine(ScaleOverTime(Vector3.zero, deathAnimDuration)); // this coroutine destroys the player at the end :man_juggling:
+            WaitUntil death = new WaitUntil(() => !isDying);
+            yield return death;
             Debug.Log("lowk won typ sh2");           
+            SceneManager.LoadScene("Winner Winner Chicken Dinner"); //rlly regretting the long name now...
             yield break;
         }
         else
@@ -43,6 +69,8 @@ public class DeathAndDespair : MonoBehaviour
 
     private IEnumerator ScaleOverTime(Vector3 targetScale, float duration)
     {
+        isDying = true;
+
         Vector3 initialScale = transform.localScale;
         float elapsedTime = 0f;
 
@@ -58,6 +86,7 @@ public class DeathAndDespair : MonoBehaviour
         }
 
         transform.localScale = targetScale;
+        isDying = false;
 
         Destroy(this.gameObject);
     }

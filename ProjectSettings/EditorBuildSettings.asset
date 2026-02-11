@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Kaitlyn/Scenes/Level.unity
     guid: d18500c4703808549bc1564e9ad49b9b
+  - enabled: 1
+    path: Assets/Kaitlyn/Scenes/Winner Winner Chicken Dinner.unity
+    guid: 100c9e12aaff881418048513d7f7fcd4
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
