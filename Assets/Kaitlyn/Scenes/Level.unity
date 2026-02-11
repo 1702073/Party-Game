@@ -921,6 +921,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1014371524}
   - component: {fileID: 1014371523}
+  - component: {fileID: 1014371525}
   m_Layer: 0
   m_Name: ProjectileManager
   m_TagString: Untagged
@@ -962,6 +963,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1014371525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014371522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5bbd81f78f5d64dae80d6565ca3d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathBeamPrefab: {fileID: 4728865754308101327, guid: 42751517813f8aa4d9af09c5068115a7, type: 3}
+  beamCooldown: 5
 --- !u!1 &1051104359
 GameObject:
   m_ObjectHideFlags: 0
