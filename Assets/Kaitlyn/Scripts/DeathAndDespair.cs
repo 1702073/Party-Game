@@ -15,7 +15,10 @@ public class DeathAndDespair : MonoBehaviour
 
     void Start()
     {
-        playerCount = PlayerInputManager.instance.playerCount;
+        if(PlayerInputManager.instance != null)
+        {
+            playerCount = PlayerInputManager.instance.playerCount;
+        }
     }
 
     void Update()
@@ -50,8 +53,11 @@ public class DeathAndDespair : MonoBehaviour
         Debug.Log($"Player Count {playerCount}");
         if (playerCount <= 0)
         {
-            timer.stop();
-            timer.Reset();
+            if (timer != null)
+            {
+                timer.stop();
+                timer.Reset();
+            }
             StartCoroutine(ScaleOverTime(Vector3.zero, deathAnimDuration)); // this coroutine destroys the player at the end :man_juggling:
             WaitUntil death = new WaitUntil(() => !isDying);
             yield return death;
