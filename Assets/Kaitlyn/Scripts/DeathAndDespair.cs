@@ -1,7 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DeathAndDespair : MonoBehaviour
 {
@@ -11,6 +13,9 @@ public class DeathAndDespair : MonoBehaviour
 
     private Timerexample timer;
 
+    [SerializeField] private Image winScreen;
+    [SerializeField] private List<Sprite> winScreens;
+
     private bool isDying;
 
     void Start()
@@ -18,7 +23,7 @@ public class DeathAndDespair : MonoBehaviour
         if(PlayerInputManager.instance != null)
         {
             playerCount = PlayerInputManager.instance.playerCount;
-        }
+        }        
     }
 
     void Update()
@@ -41,10 +46,13 @@ public class DeathAndDespair : MonoBehaviour
         if (scene.name == "Level")
         {
             timer = FindFirstObjectByType<Timerexample>();
+            winScreen = GameObject.FindGameObjectWithTag(tag: "WinScreen").GetComponent<Image>();
+            winScreen.gameObject.SetActive(false);
         }
         else
         {
             timer = null;
+            winScreen = null;
         }
     }
     public IEnumerator Death()
@@ -58,11 +66,20 @@ public class DeathAndDespair : MonoBehaviour
                 timer.stop();
                 timer.Reset();
             }
+            int index = this.gameObject.GetComponent<PlayerInput>().playerIndex;
+
             StartCoroutine(ScaleOverTime(Vector3.zero, deathAnimDuration)); // this coroutine destroys the player at the end :man_juggling:
             WaitUntil death = new WaitUntil(() => !isDying);
             yield return death;
-            Debug.Log("lowk won typ sh2");           
-            SceneManager.LoadScene("Winner Winner Chicken Dinner"); //rlly regretting the long name now...
+            Debug.Log("lowk won typ sh2"); 
+            if(winScreen != null)
+            {
+                winScreen.gameObject.SetActive(true);
+                winScreen.sprite = winScreens[index];
+                Time.timeScale = 0;
+            }
+
+            //SceneManager.LoadScene("Winner Winner Chicken Dinner"); //rlly regretting the long name now...
             yield break;
         }
         else
