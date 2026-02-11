@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor;
+//using UnityEditor;
 using System.IO;
 
 public class ShopButtonScript : MonoBehaviour
@@ -15,8 +15,7 @@ public class ShopButtonScript : MonoBehaviour
     public void CheckOwned()
     {
         var skin = gameObject.GetComponent<Image>().sprite;
-        string assetPath = AssetDatabase.GetAssetPath(skin);
-        string assetName = Path.GetFileNameWithoutExtension(assetPath);
+        string assetName = skin.texture.name;
         var ownedSkins = SaveDataController.Instance.current.UnlockedSkins.Skins;
         if (!ownedSkins.Contains(assetName))
         {

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEditor;
+//using UnityEditor;
 using System.IO;
 
 public class NewShopScript : MonoBehaviour
@@ -27,8 +27,7 @@ public class NewShopScript : MonoBehaviour
     public void Buy(int index)
     {
         var skin = allSkins[index];
-        string assetPath = AssetDatabase.GetAssetPath(skin);
-        string assetName = Path.GetFileNameWithoutExtension(assetPath);
+        string assetName = skin.skin.texture.name;
         var ownedSkins = SaveDataController.Instance.current.UnlockedSkins.Skins;
         if (ownedSkins.Contains(assetName))
         {
