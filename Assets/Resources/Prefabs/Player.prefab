@@ -335,6 +335,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAnimDuration: 0.3
+  winScreen: {fileID: 0}
+  winScreens:
+  - {fileID: 21300000, guid: 0e96b2fd71b4dc441a78285e1b01c4af, type: 3}
+  - {fileID: 21300000, guid: 90833d76d4a6e6048b1d151487404749, type: 3}
+  - {fileID: 21300000, guid: 1bf23811237fcc14cbf0ef8d2e76e01d, type: 3}
+  - {fileID: 21300000, guid: 02e4f46058e020543ae4c95d166f394e, type: 3}
 --- !u!1 &3287464917767728758
 GameObject:
   m_ObjectHideFlags: 0

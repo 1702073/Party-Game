@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SkinButton
   - Selected
+  - WinScreen
   layers:
   - Default
   - TransparentFX
