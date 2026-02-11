@@ -7,6 +7,7 @@ public class DeathBeam : MonoBehaviour
     [Header("References")]
     public GameObject warning;
     public GameObject beam;
+    public BoxCollider2D beamCollider;
     AudioSource audioSource;
     public GameObject particle;
     ParticleSystem system;
@@ -46,6 +47,7 @@ public class DeathBeam : MonoBehaviour
         warningFlashTime = warningDuration / 10;
 
         beam.GetComponent<SpriteRenderer>().color = beamColor;
+        //beamCollider = beam.GetComponent<BoxCollider2D>();
         audioSource = GetComponent<AudioSource>();
         system = particle.GetComponent<ParticleSystem>();
         shapeType = ParticleSystemShapeType.Rectangle;
@@ -106,6 +108,7 @@ public class DeathBeam : MonoBehaviour
                 if (beam.transform.localScale.x < width)
                 {
                     beam.transform.localScale += new Vector3(Time.deltaTime * (5 * width), 0, 0);
+                    beamCollider.size = new Vector2(beam.transform.localScale.x, beamCollider.size.y);
                 }
 
                 beamDuration -= Time.deltaTime;
@@ -130,6 +133,7 @@ public class DeathBeam : MonoBehaviour
                 if (beam.transform.localScale.x > 0)
                 {
                     beam.transform.localScale -= new Vector3(Time.deltaTime * (5 * width), 0, 0);
+                    beamCollider.size = new Vector2(beam.transform.localScale.x, beamCollider.size.y);
                 }
                 else
                 {
@@ -148,7 +152,12 @@ public class DeathBeam : MonoBehaviour
             Mathf.Clamp(beam.transform.localScale.x, 0, width),
             beam.transform.localScale.y,
             beam.transform.localScale.z
-        );
+            );
+
+            beamCollider.size = new Vector2(
+            beam.transform.localScale.x, 
+            beamCollider.size.y
+            );
         }
     }
 }
