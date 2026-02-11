@@ -10,13 +10,46 @@ public class ProjectileManager : MonoBehaviour
     [SerializeField] private float warningDuration;
     [SerializeField] private float spinCooldown;
     [SerializeField] private float spinSpeed = .5f;
+    [SerializeField] private float bombSpawnCooldown = 2f;
+
+    private Timerexample timer;
 
 
     private void Start()
     {
         spinningBlade = Resources.Load<GameObject>("Prefabs/Blade");
+        timer = FindFirstObjectByType<Timerexample>();
         StartCoroutine(SpawnBlade());
-        InvokeRepeating(nameof(SpawnBomb), 2f, 2f);
+        Invoke(nameof(SpawnBombStart), 2f);
+    }
+
+    private void FixedUpdate()
+    {
+        #region difficulty scaling
+        if (timer != null)
+        {
+            if (timer.val >= 20 && timer.val <= 20.02)
+            {
+                bombSpawnCooldown *= .8f;
+            }
+            else if (timer.val >= 40 && timer.val <= 40.02)
+            {
+                bombSpawnCooldown *= .8f;
+            }
+            else if (timer.val >= 60 && timer.val <= 60.02)
+            {
+                bombSpawnCooldown *= .8f;
+            }
+            else if (timer.val >= 80 && timer.val <= 80.02)
+            {
+                bombSpawnCooldown *= .8f;
+            }
+            else if (timer.val >= 100 && timer.val <= 100.02)
+            {
+                bombSpawnCooldown *= .8f;
+            }
+        }
+        #endregion
     }
 
     private IEnumerator SpawnBlade()
@@ -34,9 +67,19 @@ public class ProjectileManager : MonoBehaviour
         GameObject bomb = Instantiate(bombPrefab, spawnPos, Quaternion.identity);
     }
 
- 
+    public IEnumerator RepeatSpawnBomb()
+    {
+        while (true)
+        {
+            SpawnBomb();
+            yield return new WaitForSeconds(bombSpawnCooldown);
+        }
+    }
 
-
+    private void SpawnBombStart()
+    {
+        StartCoroutine(RepeatSpawnBomb());
+    }
 
 
 }

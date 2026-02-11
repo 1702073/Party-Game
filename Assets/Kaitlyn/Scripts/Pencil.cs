@@ -18,15 +18,42 @@ public class Pencil : MonoBehaviour
 
     public float pencilSpawnTime; // how often pencils spawn
 
+    private Timerexample timer;
+
     void Start()
     {
         mainCam = Camera.main;
-        InvokeRepeating("PencilToSpawn", 2.5f, pencilSpawnTime);
+        timer = FindFirstObjectByType<Timerexample>();
+        Invoke(nameof(PencilToSpawn), 2);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        
+        #region difficulty scaling
+        if (timer != null)
+        {
+            if (timer.val >= 20 && timer.val <= 20.02)
+            {
+                pencilSpawnTime *= .8f;
+            }
+            else if (timer.val >= 40 && timer.val <= 40.02)
+            {
+                pencilSpawnTime *= .8f;
+            }
+            else if (timer.val >= 60 && timer.val <= 60.02)
+            {
+                pencilSpawnTime *= .8f;
+            }
+            else if (timer.val >= 80 && timer.val <= 80.02)
+            {
+                pencilSpawnTime *= .8f;
+            }
+            else if (timer.val >= 100 && timer.val <= 100.02)
+            {
+                pencilSpawnTime *= .8f;
+            }
+        }
+        #endregion
     }
 
     public void PencilToSpawn() // originally for the manual spawn but invoke repeating needs a void so ill use this InputAction.CallbackContext ctx
@@ -35,8 +62,9 @@ public class Pencil : MonoBehaviour
 
         //Transform spawnPoint = pencilSpawnPoints[Random.Range(0, pencilSpawnPoints.Count)];
 
+        StartCoroutine(RepeatSpawnPencil());
 
-        StartCoroutine(RandomerPencilSpawn());
+        //StartCoroutine(RandomerPencilSpawn());
 
         //StartCoroutine(SpwanPencil(spawnPoint));
     }
@@ -110,5 +138,14 @@ public class Pencil : MonoBehaviour
         Destroy(pencil, 2f);
 
         yield break;
+    }
+
+    public IEnumerator RepeatSpawnPencil()
+    {
+        while (true)
+        {
+            StartCoroutine(RandomerPencilSpawn());
+            yield return new WaitForSeconds(pencilSpawnTime);
+        }
     }
 }

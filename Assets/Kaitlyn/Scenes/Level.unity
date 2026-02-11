@@ -849,6 +849,7 @@ MonoBehaviour:
   warningDuration: 2
   spinCooldown: 0
   spinSpeed: 0.5
+  bombSpawnCooldown: 2
 --- !u!4 &1014371524
 Transform:
   m_ObjectHideFlags: 0
@@ -890,8 +891,8 @@ Transform:
   m_GameObject: {fileID: 1051104359}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.048, y: 0.016, z: 10}
-  m_LocalScale: {x: 1.6633857, y: 1.6633857, z: 1.6633857}
+  m_LocalPosition: {x: -0.0004, y: 0.000133, z: 10}
+  m_LocalScale: {x: 1.6591936, y: 1.659239, z: 1.633977}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 635257091}
