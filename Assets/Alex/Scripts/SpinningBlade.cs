@@ -23,8 +23,14 @@ public class SpinningBlade : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("E");
-            //Call the player death func
+            if(collision.gameObject.TryGetComponent(out DeathAndDespair deathAndDespair))
+            {              
+                StartCoroutine(deathAndDespair.Death());
+            }
+            else
+            {
+                Debug.Log(":pensive:");
+            }
         }
     }
 }

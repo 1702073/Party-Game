@@ -21,10 +21,10 @@ public class PlayerParticles : MonoBehaviour
                 mainModule.startColor = Color.red;
                 break;
             case 2:
-                mainModule.startColor = Color.green;
+                mainModule.startColor = new Color(.8f, .276f, 0f);
                 break;
             case 3:
-                mainModule.startColor = new Color(.8f, .276f, 0f);
+                mainModule.startColor = Color.green;
                 break;
         }
 

@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class NewCharacterSelect : MonoBehaviour
 {
 
-
+    [SerializeField] private List<Sprite> defaultSkins;
     public PlayerInputManager playerInputManager;
     private GameObject cursorPrefab;
     [SerializeField] private Canvas canvas;
@@ -30,13 +30,16 @@ public class NewCharacterSelect : MonoBehaviour
         spawned = true;
         cursorPrefab = Resources.Load<GameObject>("Prefabs/Cursor");
 
+        int k = 0;
         for (int i = 0; i < InputSystem.devices.Count; ++i)
         {
             var device = InputSystem.devices[i];
             if (device is Keyboard || device is Gamepad)
             {
+                selectedImages[k].GetComponent<Image>().sprite = defaultSkins[k];
                 var input = playerInputManager.JoinPlayer(pairWithDevice: device);
-                _players.Add(input.gameObject, null);
+                _players.Add(input.gameObject, defaultSkins[k]);
+                input.gameObject.GetComponent<SpriteRenderer>().sprite = defaultSkins[k];
                 DontDestroyOnLoad(input.gameObject);
                 if (device is Gamepad)
                 {
@@ -49,6 +52,7 @@ public class NewCharacterSelect : MonoBehaviour
                 {
                     kbm = input.gameObject;
                 }
+                k++;
             }
         }
         currentCount = playerInputManager.playerCount;
@@ -93,9 +97,15 @@ public class NewCharacterSelect : MonoBehaviour
         canvas = FindAnyObjectByType<Canvas>();
         GameObject skinImages = GameObject.FindGameObjectWithTag("Selected");
         int j = 0;
+        currentCount = playerInputManager.playerCount;
+
         foreach (Transform skin in skinImages.transform)
         {
             selectedImages[j] = skin.gameObject;
+            if (j < currentCount)
+            {
+                selectedImages[j].GetComponent<Image>().sprite = _players.Values.ToList()[j];
+            }
             j++;
         }
         for (int i = 0; i < InputSystem.devices.Count; ++i)
