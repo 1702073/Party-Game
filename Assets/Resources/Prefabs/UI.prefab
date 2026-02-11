@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2909519790072301039}
   - component: {fileID: 7006400815224797558}
   - component: {fileID: 3220310764393015824}
+  - component: {fileID: 1466993757477777096}
   m_Layer: 5
   m_Name: Resume
   m_TagString: Untagged
@@ -120,9 +121,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7885608068481390806}
-        m_TargetAssemblyTypeName: Master_Pause, Assembly-CSharp
-        m_MethodName: Continue
+      - m_Target: {fileID: 1466993757477777096}
+        m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
+        m_MethodName: press
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -132,6 +133,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1466993757477777096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116972642734178310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf25d90fd6dc2a4d80d36234753f9e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene:
+    _sceneAsset: {fileID: 102900000, guid: 2fce772fa3b6bf14cb3d9303f5d291cd, type: 3}
+    _sceneName: Start Menu
 --- !u!1 &1371427016540994985
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7765021303302442810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -528,13 +544,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9029801457034984789}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
