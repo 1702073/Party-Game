@@ -2,17 +2,7 @@ using UnityEngine;
 
 public class PencilTrigger : MonoBehaviour
 {
-    //I FORGOT THE PENCIL SCRIPT WAS ON A  SEPERATE OBJECT CALLE DBLERP
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
+    //I FORGOT THE PENCIL SCRIPT WAS ON A  SEPERATE OBJECT CALLED BLERP
 
     private void OnTriggerEnter2D(Collider2D collision) // should the pencil get destroyed when it hits someone or should it keep going ??
     {

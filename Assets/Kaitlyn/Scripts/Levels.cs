@@ -11,10 +11,4 @@ public class Levels : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = levelSprites[Random.Range(0, 2)];
 
     }
-
-    
-    void Update()
-    {
-        
-    }
 }
