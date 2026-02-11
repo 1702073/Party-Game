@@ -8,22 +8,24 @@ public class Pausing : MonoBehaviour
 
     public void Awake()
     {
-        masterPause = FindAnyObjectByType<Master_Pause>(FindObjectsInactive.Include);
     }
     
 
     public void Toggle(InputAction.CallbackContext ctx)
     {
+        masterPause = FindAnyObjectByType<Master_Pause>(FindObjectsInactive.Include);
         masterPause.Toggle(ctx);
     }
 
     public void Pause()
     {
+        masterPause = FindAnyObjectByType<Master_Pause>(FindObjectsInactive.Include);
         masterPause.Pause();
     }
 
     public void Continue()
     {
+        masterPause = FindAnyObjectByType<Master_Pause>(FindObjectsInactive.Include);
         masterPause.Continue();
     }
 }
