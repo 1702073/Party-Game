@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e03fd21fc64ba541885e6f9df62f9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pencilPrefab: {fileID: 1702938396}
+  pencilPrefab: {fileID: 4419012577252153348, guid: 2a6a2be14393e194187bb4d33c5932c0, type: 3}
   pencilSpawnPoints: []
   warningTime: 1
   pencilSpeed: 25
@@ -1843,6 +1843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: penkil
       objectReference: {fileID: 0}
+    - target: {fileID: 4419012577252153348, guid: 2a6a2be14393e194187bb4d33c5932c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6743859120079313988, guid: 2a6a2be14393e194187bb4d33c5932c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -40.7
@@ -1883,16 +1887,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7460331605005878731, guid: 2a6a2be14393e194187bb4d33c5932c0, type: 3}
+      propertyPath: m_Color.a
+      value: 0.49803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460331605005878731, guid: 2a6a2be14393e194187bb4d33c5932c0, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7529412
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a6a2be14393e194187bb4d33c5932c0, type: 3}
---- !u!1 &1702938396 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4419012577252153348, guid: 2a6a2be14393e194187bb4d33c5932c0, type: 3}
-  m_PrefabInstance: {fileID: 1702938395}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1702938401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6743859120079313988, guid: 2a6a2be14393e194187bb4d33c5932c0, type: 3}

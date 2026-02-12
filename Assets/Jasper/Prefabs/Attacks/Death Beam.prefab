@@ -5118,7 +5118,7 @@ MonoBehaviour:
   warning: {fileID: 2693467576958733281}
   beam: {fileID: 3793331100913828355}
   beamCollider: {fileID: 0}
-  particle: {fileID: 0}
+  particle: {fileID: 1110972666329681813}
   warningSound1: {fileID: 8300000, guid: 56a034b49a70ff1459d0dcdc28732ef8, type: 3}
   warningSound2: {fileID: 8300000, guid: cc93acc3e18c83e4682ce4e2c2a90718, type: 3}
   fireSound: {fileID: 8300000, guid: a8673d7877a04e34baaaeb053b10b88d, type: 3}
@@ -5140,7 +5140,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

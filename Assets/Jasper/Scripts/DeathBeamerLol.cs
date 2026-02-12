@@ -68,7 +68,7 @@ public class DeathBeamerLol : MonoBehaviour
         {
             float x = player.transform.position.x;
             float y = player.transform.position.y;
-            float width = Random.Range(2f, 4f);
+            float width = Random.Range(1f, 2f);
             float angle = Random.Range(0, 360);
             float delay = 1.5f;
             float sustain = 0.5f;

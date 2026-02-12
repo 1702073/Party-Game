@@ -6,17 +6,31 @@ public class BombScript : MonoBehaviour
 {
 
     private SpriteRenderer _bombSprite;
+    SpriteRenderer _warningSprite;
     [SerializeField] private float blinkDuration = 1f;
     [SerializeField] private int blinks = 3;
     [SerializeField] private GameObject warning;
+    public Color warningColor;
+    public Color explodeColor;
     [SerializeField] private LayerMask playerLayer;
-    
+
+    AudioSource audioSource;
+    public AudioClip tickSound;
+    public AudioClip explodeSound;
+
 
     void Start()
     {
         _bombSprite = GetComponent<SpriteRenderer>();
+        _warningSprite = warning.GetComponent<SpriteRenderer>();
         StartCoroutine(Blink());
         StartCoroutine(ChangeTrigger());
+
+        audioSource = GetComponent<AudioSource>();
+
+        warning.GetComponent<SpriteRenderer>().color = warningColor;
+
+        _warningSprite.color = new Color32(0, 0, 0, 0);
     }
 
     // Update is called once per frame
@@ -41,16 +55,24 @@ public class BombScript : MonoBehaviour
             if (i % 2 == 0)
             {
                 _bombSprite.color = Color.white;
+                _warningSprite.color = new Color32(0, 0, 0, 0);
             }
             else
             {
                 _bombSprite.color = Color.red;
+                _warningSprite.color = warningColor;
+                
 
+                if (i + 1 < blinks * 2)
+                {
+                    audioSource.PlayOneShot(tickSound);
+                }
             }
 
             if (!(i + 1 < blinks * 2))
             {
                 StartCoroutine(WarningExpand());
+                audioSource.PlayOneShot(explodeSound);
             }
 
             yield return new WaitForSeconds(blinkDuration / 2f);
@@ -64,6 +86,7 @@ public class BombScript : MonoBehaviour
     private IEnumerator WarningExpand()
     {
         warning.SetActive(warning);
+        _warningSprite.color = explodeColor;
         float elapsed = 0f;
         Vector3 start = Vector3.zero;
         start.z = 1f;

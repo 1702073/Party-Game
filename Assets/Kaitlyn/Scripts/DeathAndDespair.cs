@@ -7,7 +7,9 @@ using UnityEngine.UI;
 
 public class DeathAndDespair : MonoBehaviour
 {
-    public float deathAnimDuration = .3f;
+    public float deathAnimDuration = .5f;
+    public AudioClip deathSound;
+    AudioSource audioSource;
 
     private static int playerCount;
 
@@ -20,7 +22,9 @@ public class DeathAndDespair : MonoBehaviour
 
     void Start()
     {
-        if(PlayerInputManager.instance != null)
+        audioSource = GetComponent<AudioSource>();
+
+        if (PlayerInputManager.instance != null)
         {
             playerCount = PlayerInputManager.instance.playerCount;
         }        
@@ -57,6 +61,7 @@ public class DeathAndDespair : MonoBehaviour
     }
     public IEnumerator Death()
     {
+        audioSource.PlayOneShot(deathSound);
         playerCount--;
         Debug.Log($"Player Count {playerCount}");
         if (playerCount <= 0)
@@ -88,6 +93,7 @@ public class DeathAndDespair : MonoBehaviour
             Debug.Log("im crine");
             yield return null;
         }
+        
     }
 
     private IEnumerator ScaleOverTime(Vector3 targetScale, float duration)
